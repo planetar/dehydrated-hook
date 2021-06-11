@@ -1,7 +1,7 @@
 #   this script is specifically tailored for an octoprint on octopi scenario
-#   we will combine fullchain.pem and private key into a file written to /etc/haproxy/ssl with "$domain_combined.pem" as the filename
-
+#   combine fullchain.pem and private key into a file written to /etc/haproxy/ssl with "$domain_combined.pem" as the filename
 #   haproxy configuration needs manual adaption to that: put the path to the certificate where snakeoil.pem is referenced
+#   This script is indebted to detailed info at https://community.octoprint.org/t/lets-encrypt-on-octopi/15328
 #
 
 hook=$1
