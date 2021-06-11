@@ -1,6 +1,6 @@
 # Hook Script for dehydrated with dns.he.net
 
-This is a bash script to help generate certificates with Let's Encrypt using the dns_01 method. It is a hook script to be called from [dehydrated](https://github.com/dehydrated-io/dehydrated). It is specialized for the free DNS service offered by Hurricane Electric at [dns.he.net](dns.he.net) and not directly useful with any other DNS server. It has been created to supply an octoprint/octopi system behind haproxy with certificates but this does not limit it to octoprint print hosts.
+This is a bash script to help generate certificates with Let's Encrypt using the dns_01 method. It is a hook script to be called from [dehydrated](https://github.com/dehydrated-io/dehydrated). It is specialized for the free DNS service offered by Hurricane Electric at [dns.he.net](dns.he.net) and not directly useful with any other DNS server. It has been created in an IPv6 context where the entire lan can have global addresses.
 
 The script utilises the option to enable Dynamic DNS for TXT records in a zone served by dns.he.net. Any such dynamic record has it's very own key to authenticate updates. So you don't have to open your credentials (and thus complete control over your domains) to a script running as root just to enable the issue of certificates. 
 
@@ -64,4 +64,5 @@ The most likely are problems with the update key aka password. Sometimes the dyn
 Another thing is the minimum **TimeToLive** for a dns record, which is 300 seconds. In other words, there may be up to 5 minutes wait until the update to a challenge is visible. The script will be rather noisy about the wait, putting out a line every second.  This is not a failure but may look like it was one. 
 
 
-
+### Scriptlets
+This could become a collection of mini-slutions and I don't even have to delete the ones not needed or wanted on a particular box - just leave them on example.com and they are present but inactive. Right now there are only 2, octoprint/haproxy the one that actually got me started on this and openhab2 was fast to write once I had figured out how to avoid interactive password dialogs with openssl and keytool 
