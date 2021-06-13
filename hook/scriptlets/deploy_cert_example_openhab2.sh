@@ -14,7 +14,7 @@ chain=$6
 timestamp=$7
 
 myHook="deploy_cert"
-myDomain="tieke.datenwusel.net"
+myDomain="openhab.example.com"
 
 
 if [ "${hook}" == $myHook ]; then

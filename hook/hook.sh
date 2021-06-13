@@ -37,8 +37,22 @@
 
 
 
-# exit_hook hook
-#  calls scriptlets exit*.sh
+## when there's nothing to do, don't do it
+# you can disable any kind of hook event by deleting it from the following list
+if [[ "startup_hook exit_hook deploy_challenge clean_challenge deploy_cert" != *"$hook"*   ]]; then
+        exit;
+fi
+
+## configuration
+
+# check and adapt the following settings
+certs_path="/etc/dehydrated/certs"
+domain_passwords="/etc/dehydrated/domain_passwords.txt"
+scriptlets_dir="/var/lib/dehydrated/dehydrated-hook/hook/scriptlets/"
+
+
+he_update_url="https://dyn.dns.he.net/nic/update"
+password=""
 
 
 ## store the parameters into variables
@@ -48,24 +62,6 @@ hook=$1
 domain=$2
 token=$3
 magicspell=$4
-
-
-
-## when there's nothing to do, don't do it
-# you can disable any kind of hook event by deleting it from the following list
-if [[ "startup_hook exit_hook deploy_challenge clean_challenge deploy_cert" != *"$hook"*   ]]; then
-        exit;
-fi
-
-## configuration
-
-he_update_url="https://dyn.dns.he.net/nic/update"
-password=""
-
-# check and adapt the following settings
-certs_path="/etc/dehydrated/certs"
-domain_passwords="/etc/dehydrated/domain_passwords.txt"
-scriptlets_dir="/var/lib/dehydrated/hook/scriptlets"
 
 
 ## read the domain/password table
